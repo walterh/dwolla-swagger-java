@@ -339,4 +339,78 @@ public class TransfersApi {
     }
   }
   
+  /**
+   * Get a bank transfer failure by transfer id.
+   * 
+   * @param id ID of failed bank transfer to get.
+   * @return Transfer
+   */
+  public Transfer failureById (String id) throws ApiException {
+    Object postBody = null;
+    
+    // verify the required parameter 'id' is set
+    if (id == null) {
+       throw new ApiException(400, "Missing the required parameter 'id' when calling failureById");
+    }
+    
+
+    
+    // if a URL is provided, extract the ID
+    URL u;
+    try {
+      u = new URL(id);
+      id = id.substring(id.lastIndexOf('/') + 1);
+    }
+    catch (MalformedURLException mue) {
+      u = null;
+    }
+    
+
+    // create path and map variables
+    String path = "/transfers/{id}/failure".replaceAll("\\{format\\}","json")
+      .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
+
+    // query params
+    Map<String, String> queryParams = new HashMap<String, String>();
+    Map<String, String> headerParams = new HashMap<String, String>();
+    Map<String, String> formParams = new HashMap<String, String>();
+
+    
+
+    
+
+    final String[] accepts = {
+      "application/vnd.dwolla.v1.hal+json"
+    };
+    final String accept = apiClient.selectHeaderAccept(accepts);
+
+    final String[] contentTypes = {
+      
+    };
+    final String contentType = apiClient.selectHeaderContentType(contentTypes);
+
+    if(contentType.startsWith("multipart/form-data")) {
+      boolean hasFields = false;
+      FormDataMultiPart mp = new FormDataMultiPart();
+      
+      if(hasFields)
+        postBody = mp;
+    }
+    else {
+      
+    }
+
+    try {
+      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, accept, contentType, this.authNames);
+      if(response != null){
+        return (Transfer) apiClient.deserialize(response, "", Transfer.class);
+      }
+      else {
+        return null;
+      }
+    } catch (ApiException ex) {
+      throw ex;
+    }
+  }
+  
 }

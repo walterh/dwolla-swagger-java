@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 
 @ApiModel(description = "")
-public class VerificationToken  {
+public class IavToken  {
   
   private Map<String, HalLink> links = new HashMap<String, HalLink>() ;
   private Object embedded = null;
@@ -70,7 +70,7 @@ public class VerificationToken  {
   @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
-    sb.append("class VerificationToken {\n");
+    sb.append("class IavToken {\n");
     
     sb.append("  links: ").append(links).append("\n");
     sb.append("  embedded: ").append(embedded).append("\n");

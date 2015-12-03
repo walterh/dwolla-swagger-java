@@ -126,7 +126,7 @@ public class RootApi {
     
 
     final String[] accepts = {
-      "application/json"
+      "application/vnd.dwolla.v1.hal+json"
     };
     final String accept = apiClient.selectHeaderAccept(accepts);
 

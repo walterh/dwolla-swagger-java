@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class FundingSource  {
   
   private Map<String, HalLink> links = new HashMap<String, HalLink>() ;
-  private List<Map<String, Object>> embedded = new ArrayList<Map<String, Object>>() ;
+  private Object embedded = null;
   private String id = null;
   private String status = null;
   private String type = null;
@@ -28,7 +28,7 @@ public class FundingSource  {
   
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty("_links")
   public Map<String, HalLink> getLinks() {
     return links;
@@ -42,17 +42,17 @@ public class FundingSource  {
    **/
   @ApiModelProperty(value = "")
   @JsonProperty("_embedded")
-  public List<Map<String, Object>> getEmbedded() {
+  public Object getEmbedded() {
     return embedded;
   }
-  public void setEmbedded(List<Map<String, Object>> embedded) {
+  public void setEmbedded(Object embedded) {
     this.embedded = embedded;
   }
 
   
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty("id")
   public String getId() {
     return id;
@@ -64,7 +64,7 @@ public class FundingSource  {
   
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty("status")
   public String getStatus() {
     return status;
@@ -76,7 +76,7 @@ public class FundingSource  {
   
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty("type")
   public String getType() {
     return type;
@@ -88,7 +88,7 @@ public class FundingSource  {
   
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty("name")
   public String getName() {
     return name;
@@ -100,7 +100,7 @@ public class FundingSource  {
   
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty("created")
   public Date getCreated() {
     return created;

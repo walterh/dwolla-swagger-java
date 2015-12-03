@@ -271,6 +271,64 @@ public class FundingsourcesApi {
   }
   
   /**
+   * Create a new funding source.
+   * 
+   * @param body Funding source to create.
+   * @return FundingSource
+   */
+  public FundingSource createFundingSource (CreateFundingSourceRequest body) throws ApiException {
+    Object postBody = body;
+    
+
+    
+
+    // create path and map variables
+    String path = "/funding-sources".replaceAll("\\{format\\}","json");
+
+    // query params
+    Map<String, String> queryParams = new HashMap<String, String>();
+    Map<String, String> headerParams = new HashMap<String, String>();
+    Map<String, String> formParams = new HashMap<String, String>();
+
+    
+
+    
+
+    final String[] accepts = {
+      "application/vnd.dwolla.v1.hal+json"
+    };
+    final String accept = apiClient.selectHeaderAccept(accepts);
+
+    final String[] contentTypes = {
+      "application/vnd.dwolla.v1.hal+json"
+    };
+    final String contentType = apiClient.selectHeaderContentType(contentTypes);
+
+    if(contentType.startsWith("multipart/form-data")) {
+      boolean hasFields = false;
+      FormDataMultiPart mp = new FormDataMultiPart();
+      
+      if(hasFields)
+        postBody = mp;
+    }
+    else {
+      
+    }
+
+    try {
+      String response = apiClient.invokeAPI(path, "POST", queryParams, postBody, headerParams, formParams, accept, contentType, this.authNames);
+      if(response != null){
+        return (FundingSource) apiClient.deserialize(response, "", FundingSource.class);
+      }
+      else {
+        return null;
+      }
+    } catch (ApiException ex) {
+      throw ex;
+    }
+  }
+  
+  /**
    * Get a funding source by id.
    * 
    * @param id Funding source ID to get.

@@ -23,6 +23,12 @@ public class CreateCustomer  {
   private String dateOfBirth = null;
   private String ssn = null;
   private String phone = null;
+  private String businessName = null;
+  private String businessType = null;
+  private String businessClassification = null;
+  private String ein = null;
+  private String doingBusinessAs = null;
+  private String website = null;
   private String locationHeader;
 
 
@@ -183,6 +189,78 @@ public class CreateCustomer  {
   }
 
   
+  /**
+   **/
+  @ApiModelProperty(value = "")
+  @JsonProperty("businessName")
+  public String getBusinessName() {
+    return businessName;
+  }
+  public void setBusinessName(String businessName) {
+    this.businessName = businessName;
+  }
+
+  
+  /**
+   **/
+  @ApiModelProperty(value = "")
+  @JsonProperty("businessType")
+  public String getBusinessType() {
+    return businessType;
+  }
+  public void setBusinessType(String businessType) {
+    this.businessType = businessType;
+  }
+
+  
+  /**
+   **/
+  @ApiModelProperty(value = "")
+  @JsonProperty("businessClassification")
+  public String getBusinessClassification() {
+    return businessClassification;
+  }
+  public void setBusinessClassification(String businessClassification) {
+    this.businessClassification = businessClassification;
+  }
+
+  
+  /**
+   **/
+  @ApiModelProperty(value = "")
+  @JsonProperty("ein")
+  public String getEin() {
+    return ein;
+  }
+  public void setEin(String ein) {
+    this.ein = ein;
+  }
+
+  
+  /**
+   **/
+  @ApiModelProperty(value = "")
+  @JsonProperty("doingBusinessAs")
+  public String getDoingBusinessAs() {
+    return doingBusinessAs;
+  }
+  public void setDoingBusinessAs(String doingBusinessAs) {
+    this.doingBusinessAs = doingBusinessAs;
+  }
+
+  
+  /**
+   **/
+  @ApiModelProperty(value = "")
+  @JsonProperty("website")
+  public String getWebsite() {
+    return website;
+  }
+  public void setWebsite(String website) {
+    this.website = website;
+  }
+
+  
 
 
   /**
@@ -212,6 +290,12 @@ public class CreateCustomer  {
     sb.append("  dateOfBirth: ").append(dateOfBirth).append("\n");
     sb.append("  ssn: ").append(ssn).append("\n");
     sb.append("  phone: ").append(phone).append("\n");
+    sb.append("  businessName: ").append(businessName).append("\n");
+    sb.append("  businessType: ").append(businessType).append("\n");
+    sb.append("  businessClassification: ").append(businessClassification).append("\n");
+    sb.append("  ein: ").append(ein).append("\n");
+    sb.append("  doingBusinessAs: ").append(doingBusinessAs).append("\n");
+    sb.append("  website: ").append(website).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

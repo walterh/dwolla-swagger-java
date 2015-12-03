@@ -14,7 +14,8 @@ import io.swagger.client.model.CreateCustomer;
 import io.swagger.client.model.Customer;
 import io.swagger.client.model.UpdateCustomer;
 import io.swagger.client.model.DocumentListResponse;
-import io.swagger.client.model.VerificationToken;
+import io.swagger.client.model.CustomerOAuthToken;
+import io.swagger.client.model.IavToken;
 
 import com.sun.jersey.multipart.FormDataMultiPart;
 import com.sun.jersey.multipart.file.FileDataBodyPart;
@@ -452,17 +453,17 @@ public class CustomersApi {
   }
   
   /**
-   * Get verification token for customer.
+   * Create an OAuth token that is capable of adding a financial institution for the given customer.
    * 
    * @param id ID of customer.
-   * @return VerificationToken
+   * @return CustomerOAuthToken
    */
-  public VerificationToken getCustomerVerificationToken (String id) throws ApiException {
+  public CustomerOAuthToken createFundingSourcesTokenForCustomer (String id) throws ApiException {
     Object postBody = null;
     
     // verify the required parameter 'id' is set
     if (id == null) {
-       throw new ApiException(400, "Missing the required parameter 'id' when calling getCustomerVerificationToken");
+       throw new ApiException(400, "Missing the required parameter 'id' when calling createFundingSourcesTokenForCustomer");
     }
     
 
@@ -479,7 +480,7 @@ public class CustomersApi {
     
 
     // create path and map variables
-    String path = "/customers/{id}/verification-token".replaceAll("\\{format\\}","json")
+    String path = "/customers/{id}/funding-sources-token".replaceAll("\\{format\\}","json")
       .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
 
     // query params
@@ -513,9 +514,83 @@ public class CustomersApi {
     }
 
     try {
-      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, accept, contentType, this.authNames);
+      String response = apiClient.invokeAPI(path, "POST", queryParams, postBody, headerParams, formParams, accept, contentType, this.authNames);
       if(response != null){
-        return (VerificationToken) apiClient.deserialize(response, "", VerificationToken.class);
+        return (CustomerOAuthToken) apiClient.deserialize(response, "", CustomerOAuthToken.class);
+      }
+      else {
+        return null;
+      }
+    } catch (ApiException ex) {
+      throw ex;
+    }
+  }
+  
+  /**
+   * Get iav token for customer.
+   * 
+   * @param id ID of customer.
+   * @return IavToken
+   */
+  public IavToken getCustomerIavToken (String id) throws ApiException {
+    Object postBody = null;
+    
+    // verify the required parameter 'id' is set
+    if (id == null) {
+       throw new ApiException(400, "Missing the required parameter 'id' when calling getCustomerIavToken");
+    }
+    
+
+    
+    // if a URL is provided, extract the ID
+    URL u;
+    try {
+      u = new URL(id);
+      id = id.substring(id.lastIndexOf('/') + 1);
+    }
+    catch (MalformedURLException mue) {
+      u = null;
+    }
+    
+
+    // create path and map variables
+    String path = "/customers/{id}/iav-token".replaceAll("\\{format\\}","json")
+      .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
+
+    // query params
+    Map<String, String> queryParams = new HashMap<String, String>();
+    Map<String, String> headerParams = new HashMap<String, String>();
+    Map<String, String> formParams = new HashMap<String, String>();
+
+    
+
+    
+
+    final String[] accepts = {
+      "application/vnd.dwolla.v1.hal+json"
+    };
+    final String accept = apiClient.selectHeaderAccept(accepts);
+
+    final String[] contentTypes = {
+      
+    };
+    final String contentType = apiClient.selectHeaderContentType(contentTypes);
+
+    if(contentType.startsWith("multipart/form-data")) {
+      boolean hasFields = false;
+      FormDataMultiPart mp = new FormDataMultiPart();
+      
+      if(hasFields)
+        postBody = mp;
+    }
+    else {
+      
+    }
+
+    try {
+      String response = apiClient.invokeAPI(path, "POST", queryParams, postBody, headerParams, formParams, accept, contentType, this.authNames);
+      if(response != null){
+        return (IavToken) apiClient.deserialize(response, "", IavToken.class);
       }
       else {
         return null;

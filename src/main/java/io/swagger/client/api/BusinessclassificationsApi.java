@@ -9,7 +9,7 @@ import io.swagger.client.model.*;
 import java.util.*;
 
 import io.swagger.client.model.BusinessClassificationListResponse;
-import io.swagger.client.model.Customer;
+import io.swagger.client.model.BusinessClassification;
 
 import com.sun.jersey.multipart.FormDataMultiPart;
 import com.sun.jersey.multipart.file.FileDataBodyPart;
@@ -106,9 +106,9 @@ public class BusinessclassificationsApi {
    * Get a business classification with a list of industry classifications.
    * 
    * @param id Id of business classification to get.
-   * @return Customer
+   * @return BusinessClassification
    */
-  public Customer getBusinessClassification (String id) throws ApiException {
+  public BusinessClassification getBusinessClassification (String id) throws ApiException {
     Object postBody = null;
     
     // verify the required parameter 'id' is set
@@ -166,7 +166,7 @@ public class BusinessclassificationsApi {
     try {
       String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, accept, contentType, this.authNames);
       if(response != null){
-        return (Customer) apiClient.deserialize(response, "", Customer.class);
+        return (BusinessClassification) apiClient.deserialize(response, "", BusinessClassification.class);
       }
       else {
         return null;

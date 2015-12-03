@@ -9,6 +9,7 @@ import io.swagger.client.model.*;
 import java.util.*;
 
 import io.swagger.client.model.AccountInfo;
+import io.swagger.client.model.AccountOAuthToken;
 
 import com.sun.jersey.multipart.FormDataMultiPart;
 import com.sun.jersey.multipart.file.FileDataBodyPart;
@@ -109,6 +110,80 @@ public class AccountsApi {
       String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, accept, contentType, this.authNames);
       if(response != null){
         return (AccountInfo) apiClient.deserialize(response, "", AccountInfo.class);
+      }
+      else {
+        return null;
+      }
+    } catch (ApiException ex) {
+      throw ex;
+    }
+  }
+  
+  /**
+   * Create an OAuth token that is capable of adding a financial institution for the given account.
+   * 
+   * @param id Account ID to create token for.
+   * @return AccountOAuthToken
+   */
+  public AccountOAuthToken createFundingSourcesToken (String id) throws ApiException {
+    Object postBody = null;
+    
+    // verify the required parameter 'id' is set
+    if (id == null) {
+       throw new ApiException(400, "Missing the required parameter 'id' when calling createFundingSourcesToken");
+    }
+    
+
+    
+    // if a URL is provided, extract the ID
+    URL u;
+    try {
+      u = new URL(id);
+      id = id.substring(id.lastIndexOf('/') + 1);
+    }
+    catch (MalformedURLException mue) {
+      u = null;
+    }
+    
+
+    // create path and map variables
+    String path = "/accounts/{id}/funding-sources-token".replaceAll("\\{format\\}","json")
+      .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
+
+    // query params
+    Map<String, String> queryParams = new HashMap<String, String>();
+    Map<String, String> headerParams = new HashMap<String, String>();
+    Map<String, String> formParams = new HashMap<String, String>();
+
+    
+
+    
+
+    final String[] accepts = {
+      "application/vnd.dwolla.v1.hal+json"
+    };
+    final String accept = apiClient.selectHeaderAccept(accepts);
+
+    final String[] contentTypes = {
+      
+    };
+    final String contentType = apiClient.selectHeaderContentType(contentTypes);
+
+    if(contentType.startsWith("multipart/form-data")) {
+      boolean hasFields = false;
+      FormDataMultiPart mp = new FormDataMultiPart();
+      
+      if(hasFields)
+        postBody = mp;
+    }
+    else {
+      
+    }
+
+    try {
+      String response = apiClient.invokeAPI(path, "POST", queryParams, postBody, headerParams, formParams, accept, contentType, this.authNames);
+      if(response != null){
+        return (AccountOAuthToken) apiClient.deserialize(response, "", AccountOAuthToken.class);
       }
       else {
         return null;
