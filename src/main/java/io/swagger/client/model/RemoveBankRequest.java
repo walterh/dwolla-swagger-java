@@ -8,35 +8,22 @@ import java.util.ArrayList;
 
 
 @ApiModel(description = "")
-public class HalLink  {
+public class RemoveBankRequest  {
   
-  private String href = null;
-  private String type = null;
+  private Boolean removed = null;
   private String locationHeader;
 
 
   
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("href")
-  public String getHref() {
-    return href;
-  }
-  public void setHref(String href) {
-    this.href = href;
-  }
-
-  
-  /**
-   **/
   @ApiModelProperty(value = "")
-  @JsonProperty("type")
-  public String getType() {
-    return type;
+  @JsonProperty("removed")
+  public Boolean getRemoved() {
+    return removed;
   }
-  public void setType(String type) {
-    this.type = type;
+  public void setRemoved(Boolean removed) {
+    this.removed = removed;
   }
 
   
@@ -54,10 +41,9 @@ public class HalLink  {
   @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
-    sb.append("class HalLink {\n");
+    sb.append("class RemoveBankRequest {\n");
     
-    sb.append("  href: ").append(href).append("\n");
-    sb.append("  type: ").append(type).append("\n");
+    sb.append("  removed: ").append(removed).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

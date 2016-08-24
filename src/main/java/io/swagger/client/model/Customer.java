@@ -22,6 +22,13 @@ public class Customer  {
   private String type = null;
   private String status = null;
   private String created = null;
+  private String address1 = null;
+  private String address2 = null;
+  private String city = null;
+  private String state = null;
+  private String postalCode = null;
+  private String businessName = null;
+  private String doingBusinessAs = null;
   private String locationHeader;
 
 
@@ -134,6 +141,90 @@ public class Customer  {
   }
 
   
+  /**
+   **/
+  @ApiModelProperty(value = "")
+  @JsonProperty("address1")
+  public String getAddress1() {
+    return address1;
+  }
+  public void setAddress1(String address1) {
+    this.address1 = address1;
+  }
+
+  
+  /**
+   **/
+  @ApiModelProperty(value = "")
+  @JsonProperty("address2")
+  public String getAddress2() {
+    return address2;
+  }
+  public void setAddress2(String address2) {
+    this.address2 = address2;
+  }
+
+  
+  /**
+   **/
+  @ApiModelProperty(value = "")
+  @JsonProperty("city")
+  public String getCity() {
+    return city;
+  }
+  public void setCity(String city) {
+    this.city = city;
+  }
+
+  
+  /**
+   **/
+  @ApiModelProperty(value = "")
+  @JsonProperty("state")
+  public String getState() {
+    return state;
+  }
+  public void setState(String state) {
+    this.state = state;
+  }
+
+  
+  /**
+   **/
+  @ApiModelProperty(value = "")
+  @JsonProperty("postalCode")
+  public String getPostalCode() {
+    return postalCode;
+  }
+  public void setPostalCode(String postalCode) {
+    this.postalCode = postalCode;
+  }
+
+  
+  /**
+   **/
+  @ApiModelProperty(value = "")
+  @JsonProperty("businessName")
+  public String getBusinessName() {
+    return businessName;
+  }
+  public void setBusinessName(String businessName) {
+    this.businessName = businessName;
+  }
+
+  
+  /**
+   **/
+  @ApiModelProperty(value = "")
+  @JsonProperty("doingBusinessAs")
+  public String getDoingBusinessAs() {
+    return doingBusinessAs;
+  }
+  public void setDoingBusinessAs(String doingBusinessAs) {
+    this.doingBusinessAs = doingBusinessAs;
+  }
+
+  
 
 
   /**
@@ -159,6 +250,13 @@ public class Customer  {
     sb.append("  type: ").append(type).append("\n");
     sb.append("  status: ").append(status).append("\n");
     sb.append("  created: ").append(created).append("\n");
+    sb.append("  address1: ").append(address1).append("\n");
+    sb.append("  address2: ").append(address2).append("\n");
+    sb.append("  city: ").append(city).append("\n");
+    sb.append("  state: ").append(state).append("\n");
+    sb.append("  postalCode: ").append(postalCode).append("\n");
+    sb.append("  businessName: ").append(businessName).append("\n");
+    sb.append("  doingBusinessAs: ").append(doingBusinessAs).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

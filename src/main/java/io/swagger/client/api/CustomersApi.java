@@ -56,9 +56,10 @@ public class CustomersApi {
    * 
    * @param limit How many results to return.
    * @param offset How many results to skip.
+   * @param search Search term.
    * @return CustomerListResponse
    */
-  public CustomerListResponse list (Integer limit, Integer offset) throws ApiException {
+  public CustomerListResponse list (Integer limit, Integer offset, String search) throws ApiException {
     Object postBody = null;
     
 
@@ -76,6 +77,8 @@ public class CustomersApi {
       queryParams.put("limit", apiClient.parameterToString(limit));
     if (offset != null)
       queryParams.put("offset", apiClient.parameterToString(offset));
+    if (search != null)
+      queryParams.put("search", apiClient.parameterToString(search));
     
 
     

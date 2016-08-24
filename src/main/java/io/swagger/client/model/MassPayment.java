@@ -1,9 +1,5 @@
 package io.swagger.client.model;
 
-import io.swagger.client.model.HalLink;
-import java.util.*;
-import java.util.Map;
-import java.util.Date;
 
 import io.swagger.annotations.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -12,15 +8,14 @@ import java.util.ArrayList;
 
 
 @ApiModel(description = "")
-public class Document  {
+public class MassPayment  {
   
-  private Map<String, HalLink> links = new HashMap<String, HalLink>() ;
+  private Object links = null;
+  private Object embedded = null;
   private String id = null;
   private String status = null;
-  private String type = null;
-  private Date created = null;
-  private String failureReason = null;
-  private Object embedded = null;
+  private String created = null;
+  private Object metadata = null;
   private String locationHeader;
 
 
@@ -29,11 +24,23 @@ public class Document  {
    **/
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("_links")
-  public Map<String, HalLink> getLinks() {
+  public Object getLinks() {
     return links;
   }
-  public void setLinks(Map<String, HalLink> links) {
+  public void setLinks(Object links) {
     this.links = links;
+  }
+
+  
+  /**
+   **/
+  @ApiModelProperty(value = "")
+  @JsonProperty("_embedded")
+  public Object getEmbedded() {
+    return embedded;
+  }
+  public void setEmbedded(Object embedded) {
+    this.embedded = embedded;
   }
 
   
@@ -64,23 +71,11 @@ public class Document  {
   /**
    **/
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("type")
-  public String getType() {
-    return type;
-  }
-  public void setType(String type) {
-    this.type = type;
-  }
-
-  
-  /**
-   **/
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty("created")
-  public Date getCreated() {
+  public String getCreated() {
     return created;
   }
-  public void setCreated(Date created) {
+  public void setCreated(String created) {
     this.created = created;
   }
 
@@ -88,24 +83,12 @@ public class Document  {
   /**
    **/
   @ApiModelProperty(value = "")
-  @JsonProperty("failureReason")
-  public String getFailureReason() {
-    return failureReason;
+  @JsonProperty("metadata")
+  public Object getMetadata() {
+    return metadata;
   }
-  public void setFailureReason(String failureReason) {
-    this.failureReason = failureReason;
-  }
-
-  
-  /**
-   **/
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("_embedded")
-  public Object getEmbedded() {
-    return embedded;
-  }
-  public void setEmbedded(Object embedded) {
-    this.embedded = embedded;
+  public void setMetadata(Object metadata) {
+    this.metadata = metadata;
   }
 
   
@@ -123,15 +106,14 @@ public class Document  {
   @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Document {\n");
+    sb.append("class MassPayment {\n");
     
     sb.append("  links: ").append(links).append("\n");
+    sb.append("  embedded: ").append(embedded).append("\n");
     sb.append("  id: ").append(id).append("\n");
     sb.append("  status: ").append(status).append("\n");
-    sb.append("  type: ").append(type).append("\n");
     sb.append("  created: ").append(created).append("\n");
-    sb.append("  failureReason: ").append(failureReason).append("\n");
-    sb.append("  embedded: ").append(embedded).append("\n");
+    sb.append("  metadata: ").append(metadata).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

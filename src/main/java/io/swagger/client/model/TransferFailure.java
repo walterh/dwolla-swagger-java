@@ -11,13 +11,12 @@ import java.util.ArrayList;
 
 
 @ApiModel(description = "")
-public class AccountInfo  {
+public class TransferFailure  {
   
   private Map<String, HalLink> links = new HashMap<String, HalLink>() ;
-  private String id = null;
-  private String name = null;
-  private Integer timezoneOffset = null;
   private Object embedded = null;
+  private String code = null;
+  private String description = null;
   private String locationHeader;
 
 
@@ -36,49 +35,37 @@ public class AccountInfo  {
   
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("id")
-  public String getId() {
-    return id;
-  }
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  
-  /**
-   **/
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  
-  /**
-   **/
   @ApiModelProperty(value = "")
-  @JsonProperty("timezoneOffset")
-  public Integer getTimezoneOffset() {
-    return timezoneOffset;
-  }
-  public void setTimezoneOffset(Integer timezoneOffset) {
-    this.timezoneOffset = timezoneOffset;
-  }
-
-  
-  /**
-   **/
-  @ApiModelProperty(required = true, value = "")
   @JsonProperty("_embedded")
   public Object getEmbedded() {
     return embedded;
   }
   public void setEmbedded(Object embedded) {
     this.embedded = embedded;
+  }
+
+  
+  /**
+   **/
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("code")
+  public String getCode() {
+    return code;
+  }
+  public void setCode(String code) {
+    this.code = code;
+  }
+
+  
+  /**
+   **/
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("description")
+  public String getDescription() {
+    return description;
+  }
+  public void setDescription(String description) {
+    this.description = description;
   }
 
   
@@ -96,13 +83,12 @@ public class AccountInfo  {
   @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AccountInfo {\n");
+    sb.append("class TransferFailure {\n");
     
     sb.append("  links: ").append(links).append("\n");
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("  timezoneOffset: ").append(timezoneOffset).append("\n");
     sb.append("  embedded: ").append(embedded).append("\n");
+    sb.append("  code: ").append(code).append("\n");
+    sb.append("  description: ").append(description).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

@@ -1,5 +1,9 @@
 package io.swagger.client.model;
 
+import io.swagger.client.model.HalLink;
+import io.swagger.client.model.Amount;
+import java.util.*;
+import java.util.Map;
 
 import io.swagger.annotations.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -8,35 +12,35 @@ import java.util.ArrayList;
 
 
 @ApiModel(description = "")
-public class HalLink  {
+public class FacilitatorFeeRequest  {
   
-  private String href = null;
-  private String type = null;
+  private Map<String, HalLink> links = new HashMap<String, HalLink>() ;
+  private Amount amount = null;
   private String locationHeader;
 
 
   
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("href")
-  public String getHref() {
-    return href;
+  @ApiModelProperty(value = "")
+  @JsonProperty("_links")
+  public Map<String, HalLink> getLinks() {
+    return links;
   }
-  public void setHref(String href) {
-    this.href = href;
+  public void setLinks(Map<String, HalLink> links) {
+    this.links = links;
   }
 
   
   /**
    **/
   @ApiModelProperty(value = "")
-  @JsonProperty("type")
-  public String getType() {
-    return type;
+  @JsonProperty("amount")
+  public Amount getAmount() {
+    return amount;
   }
-  public void setType(String type) {
-    this.type = type;
+  public void setAmount(Amount amount) {
+    this.amount = amount;
   }
 
   
@@ -54,10 +58,10 @@ public class HalLink  {
   @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
-    sb.append("class HalLink {\n");
+    sb.append("class FacilitatorFeeRequest {\n");
     
-    sb.append("  href: ").append(href).append("\n");
-    sb.append("  type: ").append(type).append("\n");
+    sb.append("  links: ").append(links).append("\n");
+    sb.append("  amount: ").append(amount).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

@@ -12,6 +12,8 @@ import io.swagger.client.model.TransferListResponse;
 import io.swagger.client.model.Unit$;
 import io.swagger.client.model.TransferRequestBody;
 import io.swagger.client.model.Transfer;
+import io.swagger.client.model.UpdateTransfer;
+import io.swagger.client.model.TransferFailure;
 
 import com.sun.jersey.multipart.FormDataMultiPart;
 import com.sun.jersey.multipart.file.FileDataBodyPart;
@@ -50,7 +52,7 @@ public class TransfersApi {
   /**
    * Get an account&#39;s transfers.
    * 
-   * @param id Account UUID to get transfers for.
+   * @param id Account id to get transfers for.
    * @param limit How many results to return.
    * @param offset How many results to skip.
    * @return TransferListResponse
@@ -130,7 +132,7 @@ public class TransfersApi {
   /**
    * Get a customer&#39;s transfers.
    * 
-   * @param id Customer UUID to get transfers for.
+   * @param id Customer id to get transfers for.
    * @param limit How many results to return.
    * @param offset How many results to skip.
    * @return TransferListResponse
@@ -340,12 +342,87 @@ public class TransfersApi {
   }
   
   /**
+   * Update a transfer.
+   * 
+   * @param body Transfer to update.
+   * @param id ID of transfer to get.
+   * @return Transfer
+   */
+  public Transfer update (UpdateTransfer body, String id) throws ApiException {
+    Object postBody = body;
+    
+    // verify the required parameter 'id' is set
+    if (id == null) {
+       throw new ApiException(400, "Missing the required parameter 'id' when calling update");
+    }
+    
+
+    
+    // if a URL is provided, extract the ID
+    URL u;
+    try {
+      u = new URL(id);
+      id = id.substring(id.lastIndexOf('/') + 1);
+    }
+    catch (MalformedURLException mue) {
+      u = null;
+    }
+    
+
+    // create path and map variables
+    String path = "/transfers/{id}".replaceAll("\\{format\\}","json")
+      .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
+
+    // query params
+    Map<String, String> queryParams = new HashMap<String, String>();
+    Map<String, String> headerParams = new HashMap<String, String>();
+    Map<String, String> formParams = new HashMap<String, String>();
+
+    
+
+    
+
+    final String[] accepts = {
+      "application/vnd.dwolla.v1.hal+json"
+    };
+    final String accept = apiClient.selectHeaderAccept(accepts);
+
+    final String[] contentTypes = {
+      "application/vnd.dwolla.v1.hal+json"
+    };
+    final String contentType = apiClient.selectHeaderContentType(contentTypes);
+
+    if(contentType.startsWith("multipart/form-data")) {
+      boolean hasFields = false;
+      FormDataMultiPart mp = new FormDataMultiPart();
+      
+      if(hasFields)
+        postBody = mp;
+    }
+    else {
+      
+    }
+
+    try {
+      String response = apiClient.invokeAPI(path, "POST", queryParams, postBody, headerParams, formParams, accept, contentType, this.authNames);
+      if(response != null){
+        return (Transfer) apiClient.deserialize(response, "", Transfer.class);
+      }
+      else {
+        return null;
+      }
+    } catch (ApiException ex) {
+      throw ex;
+    }
+  }
+  
+  /**
    * Get a bank transfer failure by transfer id.
    * 
    * @param id ID of failed bank transfer to get.
-   * @return Transfer
+   * @return TransferFailure
    */
-  public Transfer failureById (String id) throws ApiException {
+  public TransferFailure failureById (String id) throws ApiException {
     Object postBody = null;
     
     // verify the required parameter 'id' is set
@@ -403,7 +480,81 @@ public class TransfersApi {
     try {
       String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, accept, contentType, this.authNames);
       if(response != null){
-        return (Transfer) apiClient.deserialize(response, "", Transfer.class);
+        return (TransferFailure) apiClient.deserialize(response, "", TransferFailure.class);
+      }
+      else {
+        return null;
+      }
+    } catch (ApiException ex) {
+      throw ex;
+    }
+  }
+  
+  /**
+   * Get a transfer&#39;s fees.
+   * 
+   * @param id Transfer id to get fees for.
+   * @return TransferListResponse
+   */
+  public TransferListResponse getFeesBySource (String id) throws ApiException {
+    Object postBody = null;
+    
+    // verify the required parameter 'id' is set
+    if (id == null) {
+       throw new ApiException(400, "Missing the required parameter 'id' when calling getFeesBySource");
+    }
+    
+
+    
+    // if a URL is provided, extract the ID
+    URL u;
+    try {
+      u = new URL(id);
+      id = id.substring(id.lastIndexOf('/') + 1);
+    }
+    catch (MalformedURLException mue) {
+      u = null;
+    }
+    
+
+    // create path and map variables
+    String path = "/transfers/{id}/fees".replaceAll("\\{format\\}","json")
+      .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
+
+    // query params
+    Map<String, String> queryParams = new HashMap<String, String>();
+    Map<String, String> headerParams = new HashMap<String, String>();
+    Map<String, String> formParams = new HashMap<String, String>();
+
+    
+
+    
+
+    final String[] accepts = {
+      "application/vnd.dwolla.v1.hal+json"
+    };
+    final String accept = apiClient.selectHeaderAccept(accepts);
+
+    final String[] contentTypes = {
+      "application/vnd.dwolla.v1.hal+json"
+    };
+    final String contentType = apiClient.selectHeaderContentType(contentTypes);
+
+    if(contentType.startsWith("multipart/form-data")) {
+      boolean hasFields = false;
+      FormDataMultiPart mp = new FormDataMultiPart();
+      
+      if(hasFields)
+        postBody = mp;
+    }
+    else {
+      
+    }
+
+    try {
+      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, accept, contentType, this.authNames);
+      if(response != null){
+        return (TransferListResponse) apiClient.deserialize(response, "", TransferListResponse.class);
       }
       else {
         return null;

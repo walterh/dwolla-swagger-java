@@ -12,17 +12,12 @@ import java.util.ArrayList;
 
 
 @ApiModel(description = "")
-public class FundingSource  {
+public class FundingSourceBalance  {
   
   private Map<String, HalLink> links = new HashMap<String, HalLink>() ;
   private Object embedded = null;
-  private String id = null;
-  private String status = null;
-  private String type = null;
-  private String name = null;
-  private Date created = null;
   private Object balance = null;
-  private Boolean removed = null;
+  private Date lastUpdated = null;
   private String locationHeader;
 
 
@@ -54,66 +49,6 @@ public class FundingSource  {
   /**
    **/
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("id")
-  public String getId() {
-    return id;
-  }
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  
-  /**
-   **/
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("status")
-  public String getStatus() {
-    return status;
-  }
-  public void setStatus(String status) {
-    this.status = status;
-  }
-
-  
-  /**
-   **/
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("type")
-  public String getType() {
-    return type;
-  }
-  public void setType(String type) {
-    this.type = type;
-  }
-
-  
-  /**
-   **/
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("name")
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  
-  /**
-   **/
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("created")
-  public Date getCreated() {
-    return created;
-  }
-  public void setCreated(Date created) {
-    this.created = created;
-  }
-
-  
-  /**
-   **/
-  @ApiModelProperty(value = "")
   @JsonProperty("balance")
   public Object getBalance() {
     return balance;
@@ -126,12 +61,12 @@ public class FundingSource  {
   /**
    **/
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("removed")
-  public Boolean getRemoved() {
-    return removed;
+  @JsonProperty("lastUpdated")
+  public Date getLastUpdated() {
+    return lastUpdated;
   }
-  public void setRemoved(Boolean removed) {
-    this.removed = removed;
+  public void setLastUpdated(Date lastUpdated) {
+    this.lastUpdated = lastUpdated;
   }
 
   
@@ -149,17 +84,12 @@ public class FundingSource  {
   @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
-    sb.append("class FundingSource {\n");
+    sb.append("class FundingSourceBalance {\n");
     
     sb.append("  links: ").append(links).append("\n");
     sb.append("  embedded: ").append(embedded).append("\n");
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  status: ").append(status).append("\n");
-    sb.append("  type: ").append(type).append("\n");
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("  created: ").append(created).append("\n");
     sb.append("  balance: ").append(balance).append("\n");
-    sb.append("  removed: ").append(removed).append("\n");
+    sb.append("  lastUpdated: ").append(lastUpdated).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

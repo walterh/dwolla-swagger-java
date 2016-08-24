@@ -1,10 +1,6 @@
 package io.swagger.client.model;
 
-import io.swagger.client.model.HalLink;
 import io.swagger.client.model.Amount;
-import io.swagger.client.model.FacilitatorFeeRequest;
-import java.util.*;
-import java.util.Map;
 
 import io.swagger.annotations.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -13,31 +9,30 @@ import java.util.ArrayList;
 
 
 @ApiModel(description = "")
-public class TransferRequestBody  {
+public class MassPaymentItemRequestBody  {
   
-  private Map<String, HalLink> links = new HashMap<String, HalLink>() ;
+  private Object links = null;
   private Amount amount = null;
   private Object metadata = null;
-  private List<FacilitatorFeeRequest> fees = new ArrayList<FacilitatorFeeRequest>() ;
   private String locationHeader;
 
 
   
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty("_links")
-  public Map<String, HalLink> getLinks() {
+  public Object getLinks() {
     return links;
   }
-  public void setLinks(Map<String, HalLink> links) {
+  public void setLinks(Object links) {
     this.links = links;
   }
 
   
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   @JsonProperty("amount")
   public Amount getAmount() {
     return amount;
@@ -59,18 +54,6 @@ public class TransferRequestBody  {
   }
 
   
-  /**
-   **/
-  @ApiModelProperty(value = "")
-  @JsonProperty("fees")
-  public List<FacilitatorFeeRequest> getFees() {
-    return fees;
-  }
-  public void setFees(List<FacilitatorFeeRequest> fees) {
-    this.fees = fees;
-  }
-
-  
 
 
   /**
@@ -85,12 +68,11 @@ public class TransferRequestBody  {
   @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
-    sb.append("class TransferRequestBody {\n");
+    sb.append("class MassPaymentItemRequestBody {\n");
     
     sb.append("  links: ").append(links).append("\n");
     sb.append("  amount: ").append(amount).append("\n");
     sb.append("  metadata: ").append(metadata).append("\n");
-    sb.append("  fees: ").append(fees).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

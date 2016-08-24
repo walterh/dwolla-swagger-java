@@ -12,15 +12,12 @@ import java.util.ArrayList;
 
 
 @ApiModel(description = "")
-public class Document  {
+public class MicroDepositsInitiated  {
   
   private Map<String, HalLink> links = new HashMap<String, HalLink>() ;
-  private String id = null;
-  private String status = null;
-  private String type = null;
-  private Date created = null;
-  private String failureReason = null;
   private Object embedded = null;
+  private Date created = null;
+  private String status = null;
   private String locationHeader;
 
 
@@ -39,37 +36,13 @@ public class Document  {
   
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("id")
-  public String getId() {
-    return id;
+  @ApiModelProperty(value = "")
+  @JsonProperty("_embedded")
+  public Object getEmbedded() {
+    return embedded;
   }
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  
-  /**
-   **/
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("status")
-  public String getStatus() {
-    return status;
-  }
-  public void setStatus(String status) {
-    this.status = status;
-  }
-
-  
-  /**
-   **/
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("type")
-  public String getType() {
-    return type;
-  }
-  public void setType(String type) {
-    this.type = type;
+  public void setEmbedded(Object embedded) {
+    this.embedded = embedded;
   }
 
   
@@ -88,24 +61,12 @@ public class Document  {
   /**
    **/
   @ApiModelProperty(value = "")
-  @JsonProperty("failureReason")
-  public String getFailureReason() {
-    return failureReason;
+  @JsonProperty("status")
+  public String getStatus() {
+    return status;
   }
-  public void setFailureReason(String failureReason) {
-    this.failureReason = failureReason;
-  }
-
-  
-  /**
-   **/
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("_embedded")
-  public Object getEmbedded() {
-    return embedded;
-  }
-  public void setEmbedded(Object embedded) {
-    this.embedded = embedded;
+  public void setStatus(String status) {
+    this.status = status;
   }
 
   
@@ -123,15 +84,12 @@ public class Document  {
   @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Document {\n");
+    sb.append("class MicroDepositsInitiated {\n");
     
     sb.append("  links: ").append(links).append("\n");
-    sb.append("  id: ").append(id).append("\n");
-    sb.append("  status: ").append(status).append("\n");
-    sb.append("  type: ").append(type).append("\n");
-    sb.append("  created: ").append(created).append("\n");
-    sb.append("  failureReason: ").append(failureReason).append("\n");
     sb.append("  embedded: ").append(embedded).append("\n");
+    sb.append("  created: ").append(created).append("\n");
+    sb.append("  status: ").append(status).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

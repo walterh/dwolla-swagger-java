@@ -8,10 +8,9 @@ import java.util.ArrayList;
 
 
 @ApiModel(description = "")
-public class HalLink  {
+public class UpdateTransfer  {
   
-  private String href = null;
-  private String type = null;
+  private String status = null;
   private String locationHeader;
 
 
@@ -19,24 +18,12 @@ public class HalLink  {
   /**
    **/
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("href")
-  public String getHref() {
-    return href;
+  @JsonProperty("status")
+  public String getStatus() {
+    return status;
   }
-  public void setHref(String href) {
-    this.href = href;
-  }
-
-  
-  /**
-   **/
-  @ApiModelProperty(value = "")
-  @JsonProperty("type")
-  public String getType() {
-    return type;
-  }
-  public void setType(String type) {
-    this.type = type;
+  public void setStatus(String status) {
+    this.status = status;
   }
 
   
@@ -54,10 +41,9 @@ public class HalLink  {
   @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
-    sb.append("class HalLink {\n");
+    sb.append("class UpdateTransfer {\n");
     
-    sb.append("  href: ").append(href).append("\n");
-    sb.append("  type: ").append(type).append("\n");
+    sb.append("  status: ").append(status).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

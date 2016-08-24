@@ -45,7 +45,7 @@ public class WebhookAttempt  {
   
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
   @JsonProperty("response")
   public WebhookHttpResponse getResponse() {
     return response;

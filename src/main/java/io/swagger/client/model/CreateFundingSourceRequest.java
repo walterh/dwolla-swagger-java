@@ -10,12 +10,25 @@ import java.util.ArrayList;
 @ApiModel(description = "")
 public class CreateFundingSourceRequest  {
   
+  private Object links = null;
   private String routingNumber = null;
   private String accountNumber = null;
   private String type = null;
   private String name = null;
   private String locationHeader;
 
+
+  
+  /**
+   **/
+  @ApiModelProperty(value = "")
+  @JsonProperty("_links")
+  public Object getLinks() {
+    return links;
+  }
+  public void setLinks(Object links) {
+    this.links = links;
+  }
 
   
   /**
@@ -82,6 +95,7 @@ public class CreateFundingSourceRequest  {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateFundingSourceRequest {\n");
     
+    sb.append("  links: ").append(links).append("\n");
     sb.append("  routingNumber: ").append(routingNumber).append("\n");
     sb.append("  accountNumber: ").append(accountNumber).append("\n");
     sb.append("  type: ").append(type).append("\n");
